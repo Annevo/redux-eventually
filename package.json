@@ -1,0 +1,43 @@
+{
+  "name": "redux-eventually",
+  "version": "0.0.1",
+  "description": "Eventual consistency helpers for Redux apps",
+  "main": "lib/index.js",
+  "scripts": {
+    "clean": "rimraf lib dist es coverage",
+    "lint": "eslint src test build",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Annevo/redux-eventually.git"
+  },
+  "keywords": [
+    "redux",
+    "eventual consistency",
+    "crdt",
+    "distributed frontend"
+  ],
+  "author": "Annevo AB",
+  "contributors": [
+    "Gustav Svalander",
+    "Adam Wendell"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Annevo/redux-eventually/issues"
+  },
+  "homepage": "https://github.com/Annevo/redux-eventually#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-jest": "^21.2.0",
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "jest": "^21.2.1",
+    "rimraf": "^2.6.2"
+  }
+}
