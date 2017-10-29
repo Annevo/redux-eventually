@@ -1,6 +1,8 @@
 # redux-eventually
 
 [![Build Status](https://semaphoreci.com/api/v1/annevo/redux-eventually/branches/master/badge.svg)](https://semaphoreci.com/annevo/redux-eventually)
+[![npm](https://img.shields.io/npm/v/redux-eventually.svg)](https://www.npmjs.com/package/redux-eventually)
+[![npm](https://img.shields.io/npm/dm/redux-eventually.svg)](https://www.npmjs.com/package/redux-eventually)
 
 Eventual consistency helpers for Redux apps
 
