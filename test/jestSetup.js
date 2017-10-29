@@ -1,5 +1,4 @@
 if (!global.requestAnimationFrame) {
-  global.requestAnimationFrame = function(callback) {
-    setTimeout(callback, 0);
-  };
+  // eslint-disable-next-line immutable/no-mutation
+  global.requestAnimationFrame = callback => setTimeout(callback, 0);
 }
