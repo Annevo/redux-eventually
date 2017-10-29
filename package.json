@@ -12,9 +12,17 @@
     "type": "git",
     "url": "git+https://github.com/Annevo/redux-eventually.git"
   },
-  "keywords": ["redux", "eventual consistency", "crdt", "distributed frontend"],
+  "keywords": [
+    "redux",
+    "eventual consistency",
+    "crdt",
+    "distributed frontend"
+  ],
   "author": "Annevo AB",
-  "contributors": ["Gustav Svalander", "Adam Wendell"],
+  "contributors": [
+    "Gustav Svalander",
+    "Adam Wendell"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Annevo/redux-eventually/issues"
@@ -28,6 +36,8 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.2",
     "eslint": "^4.10.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-immutable": "^1.0.0",
@@ -42,6 +52,8 @@
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/__mocks__/fileMock.js",
       "\\.(css|less)$": "<rootDir>/test/__mocks__/styleMock.js"
     },
-    "setupFiles": ["<rootDir>/test/jestSetup.js"]
+    "setupFiles": [
+      "<rootDir>/test/jestSetup.js"
+    ]
   }
 }
