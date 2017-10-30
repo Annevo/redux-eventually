@@ -14,15 +14,18 @@ import { createEventualAction, lseq, createEventualReducer, createEventualSelect
 const ADD_TODO = "ADD_TODO";
 const REMOVE_TODO = "REMOVE_TODO";
 
-// createEventualAction(actionType, operation, selector)
-export addTodoEventually = createEventualAction(ADD_TODO, lseq.insert, state => state.todos);
+// createEventualAction(actionType, operation)
+export addTodoEventually = createEventualAction(ADD_TODO, lseq.LSEQ_INSERT);
 
-export removeTodoEventually = createEventualAction(REMOVE_TODO, lseq.delete, state => state.todos);
+export removeTodoEventually = createEventualAction(REMOVE_TODO, lseq.LSEQ_DELETE);
 
 // createEventualReducer(stateConfig)
-export reducer = createEventualReducer({
-  todos: lseq
-});
+export todosReducer = createEventualReducer(lseq);
 
-export todosSelector = createEventualSelector(lseq, state => state.todos);
+// eventualSelector returns a non-crdt representation
+export todosSelector = createEventualSelector(lseq, state => state);
+
+// Simple usage
+const state = todosReducer(addTodoEventually("Buy flowers"));
+const todos = todosSelector(state);
 ```
