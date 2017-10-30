@@ -9,7 +9,7 @@ Eventual consistency helpers for Redux apps
 
 ## Example
 ```javascript
-import { createEventualAction, createEventualReducer, lseq } from "redux-eventually";
+import { createEventualAction, lseq, createEventualReducer, createEventualSelector } from "redux-eventually";
 
 const ADD_TODO = "ADD_TODO";
 const REMOVE_TODO = "REMOVE_TODO";
@@ -23,4 +23,6 @@ export removeTodoEventually = createEventualAction(REMOVE_TODO, lseq.delete, sta
 export reducer = createEventualReducer({
   todos: lseq
 });
+
+export todosSelector = createEventualSelector(lseq, state => state.todos);
 ```
