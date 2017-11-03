@@ -4,14 +4,14 @@ module.exports = {
   rules: {
     'immutable/no-let': 2,
     'immutable/no-this': 2,
-    'immutable/no-mutation': 2
+    'immutable/no-mutation': 2,
   },
   overrides: [
     {
-      files: 'test/**/*.js',
+      files: '*.spec.js',
       env: {
-        jest: true
-      }
-    }
-  ]
+        jest: true,
+      },
+    },
+  ],
 };
