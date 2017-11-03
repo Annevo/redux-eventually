@@ -1,4 +1,4 @@
-import counterSelector from './counterSelectors';
+import counterSelector from './counterSelector';
 
 describe('counterSelectors', () => {
   it('should be a function', () => {

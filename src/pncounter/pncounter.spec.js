@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from 'redux';
 import { createCounterReducer } from './counterReducer';
 import { createCounterAction, createCounterMergeAction } from './createCounterAction';
-import counterSelector from './counterSelectors';
+import counterSelector from './counterSelector';
 
 describe('pncounter', () => {
   it('should increment on a single store', () => {
