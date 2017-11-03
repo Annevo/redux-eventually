@@ -1,3 +1,3 @@
-import Node from './Counter';
+import Counter from './Counter';
 
-export default Node;
+export default Counter;
