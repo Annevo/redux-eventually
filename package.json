@@ -1,6 +1,6 @@
 {
   "name": "redux-eventually",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Eventual consistency helpers for Redux apps",
   "main": "src/index.js",
   "scripts": {
@@ -12,17 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/Annevo/redux-eventually.git"
   },
-  "keywords": [
-    "redux",
-    "eventual consistency",
-    "crdt",
-    "distributed frontend"
-  ],
+  "keywords": ["redux", "eventual consistency", "crdt", "distributed frontend"],
   "author": "Annevo AB",
-  "contributors": [
-    "Gustav Svalander",
-    "Adam Wendell"
-  ],
+  "contributors": ["Gustav Svalander", "Adam Wendell"],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Annevo/redux-eventually/issues"
@@ -54,8 +46,6 @@
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/__mocks__/fileMock.js",
       "\\.(css|less)$": "<rootDir>/test/__mocks__/styleMock.js"
     },
-    "setupFiles": [
-      "<rootDir>/test/jestSetup.js"
-    ]
+    "setupFiles": ["<rootDir>/test/jestSetup.js"]
   }
 }
