@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from 'redux';
-import { createCounterReducer } from './counterReducer';
+import { createCounterReducer } from './createCounterReducer';
 import { createCounterAction, createCounterMergeAction } from './createCounterAction';
 import counterSelector from './counterSelector';
 
