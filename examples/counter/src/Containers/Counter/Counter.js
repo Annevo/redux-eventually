@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createCounterAction, counterSelector } from 'redux-eventually';
+import { createCounterAction, createCounterMergeAction, counterSelector } from 'redux-eventually';
 
 const incAction = createCounterAction('DEMO');
 const decAction = createCounterAction('DEMO');
+const syncAction = createCounterMergeAction('DEMO');
 
 const Counter = props =>
   (<div className="counter">
@@ -11,6 +12,7 @@ const Counter = props =>
       {props.value}
       <button onClick={() => props.onInc(props.name)}>+</button>
       <button onClick={() => props.onDec(props.name)}>-</button>
+      <button onClick={() => props.onSync()}>Sync</button>
     </div>
    </div>);
 
