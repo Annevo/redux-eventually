@@ -1,4 +1,4 @@
-import createCounterAction from './createCounterAction';
+import { createCounterAction } from './createCounterAction';
 
 describe('createCounterAction', () => {
   it('should be a function', () => {
@@ -7,13 +7,14 @@ describe('createCounterAction', () => {
 
   it('should return an action object', () => {
     const expected = {
-      type: 'PN_COUNTER',
+      type: 'PN_COUNTER_AA',
       payload: {
         id: 'A',
         value: 1,
       },
     };
-    const result = createCounterAction('A', 1);
+    const countA = createCounterAction('AA');
+    const result = countA('A', 1);
     expect(result).toEqual(expected);
   });
 });
