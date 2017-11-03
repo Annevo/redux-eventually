@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/npm/v/redux-eventually.svg)](https://www.npmjs.com/package/redux-eventually)
 [![npm](https://img.shields.io/npm/dm/redux-eventually.svg)](https://www.npmjs.com/package/redux-eventually)
 
-Eventual consistency helpers for Redux apps
+Redux-eventually facilitates using CRDTs inside of the redux store. This library consists of factory methods for easier usage with the otherwise quite cumbersome data-structures.
 
 ## Example Counter
 ```javascript
