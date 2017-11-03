@@ -1,4 +1,4 @@
-import { createCounterReducer, counterInitalState } from './counterReducer';
+import { createCounterReducer, counterInitalState } from './createCounterReducer';
 
 describe('createCounterReducer', () => {
   it('should be a function', () => {
