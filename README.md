@@ -6,8 +6,47 @@
 
 Eventual consistency helpers for Redux apps
 
+## Example Counter
+```javascript
+import { createCounterAction, createCounterReducer, createCounterSelector } from "redux-eventually";
 
-## Example
+const COUNTER = "COUNTER";
+
+export countAction = createCounterAction(COUNTER);
+/*
+{
+  type: COUNTER,
+  payload: {
+    id: "adam",
+    value: 1
+  }
+}
+*/
+
+export counterReducer = createCounterReducer();
+/*
+{
+  type: "pn-counter",
+  p: {
+    adam: 1,
+    gustav: 0
+  },
+  n: {
+    adam: 1,
+    gustav: 1
+  }
+}
+*/
+
+export counterSelector = createCounterSelector();
+
+let store = createStore(todosReducer);
+const state = todosReducer(countAction("adam", 1));
+const todos = todosSelector(state);
+````
+
+
+## Example LSEQ
 ```javascript
 import { createEventualAction, lseq, createEventualReducer, createEventualSelector } from "redux-eventually";
 
@@ -26,11 +65,7 @@ export todosReducer = createEventualReducer(lseq);
 export todosSelector = createEventualSelector(lseq, state => state);
 
 // Simple usage
-let store = createStore(
-  todosReducer,
-  undefined,
-  applyMiddleware(logger)
-)
+let store = createStore(todosReducer);
 const state = todosReducer(addTodoEventually("Buy flowers"));
 const todos = todosSelector(state);
 ```
