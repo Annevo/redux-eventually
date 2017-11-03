@@ -26,6 +26,11 @@ export todosReducer = createEventualReducer(lseq);
 export todosSelector = createEventualSelector(lseq, state => state);
 
 // Simple usage
+let store = createStore(
+  todosReducer,
+  undefined,
+  applyMiddleware(logger)
+)
 const state = todosReducer(addTodoEventually("Buy flowers"));
 const todos = todosSelector(state);
 ```
