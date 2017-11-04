@@ -1,11 +1,14 @@
+/* eslint immutable/no-this: 0 */
+/* eslint immutable/no-mutation: 0 */
+/* eslint no-console: 0 */
 import React from 'react';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import { createCounterReducer, createCounterMergeAction } from 'redux-eventually';
+import { createCounterMergeAction } from 'redux-eventually';
 
 import Node from './Containers/Node';
 
 import './App.css';
+
+const syncAction = createCounterMergeAction('DEMO');
 
 class App extends React.Component {
   constructor(props) {
@@ -19,19 +22,16 @@ class App extends React.Component {
   }
 
   sync(nodeId, pnstate) {
-    // console.log('Broadcast', pnstate);
-    this.state.online.map((id) => {
+    this.state.online.forEach((id) => {
       if (id !== nodeId) {
-        console.log(createCounterMergeAction('DEMO')(pnstate));
-        this.state[id](createCounterMergeAction('DEMO')(pnstate));
+        this.state[id](syncAction(pnstate));
       }
     });
   }
 
   registerNode(nodeId, dispatch) {
     console.log(`register node ${nodeId}`);
-
-    const online = this.state.online;
+    const { state: { online } } = this;
     online.push(nodeId);
     this.setState(Object.assign({}, { [nodeId]: dispatch, online }));
   }
@@ -44,6 +44,7 @@ class App extends React.Component {
       });
     } else {
       console.log(`node ${nodeId} has gone offline`);
+
       this.setState({
         online: this.state.online.concat(nodeId),
       });
@@ -57,19 +58,19 @@ class App extends React.Component {
         style={{ display: 'flex', width: '100%', justifyContent: 'space-around' }}
       >
         <Node
-          name="Adam"
+          name="Vancouver"
           onSync={this.sync}
           register={this.registerNode}
           toggleOnline={this.toggleOnline}
         />
         <Node
-          name="Gustav"
+          name="Stockholm"
           onSync={this.sync}
           register={this.registerNode}
           toggleOnline={this.toggleOnline}
         />
         <Node
-          name="Lisa"
+          name="Tokyo"
           onSync={this.sync}
           register={this.registerNode}
           toggleOnline={this.toggleOnline}

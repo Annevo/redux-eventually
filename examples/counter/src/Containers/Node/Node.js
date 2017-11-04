@@ -1,4 +1,10 @@
+/* eslint immutable/no-this: 0 */
+/* eslint immutable/no-mutation: 0 */
+/* eslint no-console: 0 */
+/* eslint no-mixed-operators: 0 */
+/* eslint no-underscore-dangle: 0 */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { createCounterReducer } from 'redux-eventually';
@@ -10,13 +16,12 @@ const onlineReducer = (state = true, action) => (action.type === 'ONLINE_TOGGLE'
 class Node extends React.Component {
   constructor(props) {
     super(props);
+    this.sync = this.sync.bind(this);
     this.state = {
       store: null,
     };
   }
   componentWillMount() {
-    console.log('Node componentWillMount');
-    /* eslint-disable no-underscore-dangle */
     const store = createStore(
       combineReducers({
         online: onlineReducer,
@@ -24,21 +29,18 @@ class Node extends React.Component {
       }),
       window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     );
-    /* eslint-enable */
     this.props.register(this.props.name, action => store.dispatch(action));
-    const componentThis = this;
-    function sync() {
-      setTimeout(() => {
-        const pnCounterSelector = state => state.pncounter;
-        if (store.getState().online) {
-          componentThis.props.onSync(componentThis.props.name, pnCounterSelector(store.getState()));
-        }
-        sync();
-      }, Math.random() * (3000 - 2000) + 2000);
-    }
-    sync();
-
+    this.sync();
     this.setState({ store });
+  }
+  sync() {
+    setTimeout(() => {
+      const pnCounterSelector = state => state.pncounter;
+      if (this.state.store.getState().online) {
+        this.props.onSync(this.props.name, pnCounterSelector(this.state.store.getState()));
+      }
+      this.sync();
+    }, Math.random() * (6000 - 2000) + 2000);
   }
   render() {
     return (
@@ -48,5 +50,11 @@ class Node extends React.Component {
     );
   }
 }
+
+Node.propTypes = {
+  name: PropTypes.string.isRequired,
+  register: PropTypes.func.isRequired,
+  onSync: PropTypes.func.isRequired,
+};
 
 export default Node;
