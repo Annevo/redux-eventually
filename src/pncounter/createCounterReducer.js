@@ -32,7 +32,7 @@ export const createCounterReducer = name => (state = counterInitalState, action)
       if (action.payload) {
         const statePKeys = Object.keys(state.p);
         const actionPKeys = Object.keys(action.payload.p);
-        const uniqePKeys = [...new Set(statePKeys, actionPKeys)];
+        const uniqePKeys = [...new Set(statePKeys.concat(actionPKeys))];
         const p = uniqePKeys
           .map(key => ({
             [key]: Math.max(state.p[key] || 0, action.payload.p[key] || 0),
@@ -40,7 +40,7 @@ export const createCounterReducer = name => (state = counterInitalState, action)
           .reduce((a, b) => Object.assign({}, a, b), {});
         const stateNKeys = Object.keys(state.n);
         const actionNKeys = Object.keys(action.payload.n);
-        const uniqeNKeys = [...new Set(stateNKeys, actionNKeys)];
+        const uniqeNKeys = [...new Set(stateNKeys.concat(actionNKeys))];
         const n = uniqeNKeys
           .map(key => ({
             [key]: Math.max(state.n[key] || 0, action.payload.n[key] || 0),
