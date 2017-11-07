@@ -75,6 +75,12 @@ class App extends React.Component {
           register={this.registerNode}
           toggleOnline={this.toggleOnline}
         />
+        <Node
+          name="Oslo"
+          onSync={this.sync}
+          register={this.registerNode}
+          toggleOnline={this.toggleOnline}
+        />
       </div>
     );
   }
