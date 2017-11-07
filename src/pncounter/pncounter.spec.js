@@ -67,6 +67,7 @@ describe('pncounter', () => {
     const storeA = createStore(savingsReducer);
     storeA.dispatch(savingsAction('a', 10));
     storeA.dispatch(savingsAction('b', 4));
+    storeA.dispatch(savingsAction('c', 4));
     const merge = savingsMergeAction(storeA.getState());
 
     const storeB = createStore(savingsReducer);
@@ -75,7 +76,7 @@ describe('pncounter', () => {
     storeB.dispatch(merge);
 
     const result = counterSelector(storeB.getState());
-    const expected = 21;
+    const expected = 25;
     expect(result).toEqual(expected);
   });
 });
