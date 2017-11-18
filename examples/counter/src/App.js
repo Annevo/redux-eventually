@@ -14,6 +14,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // online keeps a record of all nodes
       online: [],
     };
     this.sync = this.sync.bind(this);
@@ -21,6 +22,7 @@ class App extends React.Component {
     this.toggleOnline = this.toggleOnline.bind(this);
   }
 
+  // sync propagates dispatches to all registered nodes that are online
   sync(nodeId, pnstate) {
     this.state.online.forEach((id) => {
       if (id !== nodeId) {
@@ -29,6 +31,7 @@ class App extends React.Component {
     });
   }
 
+  // registerNode registers the node for further dispatch propagation
   registerNode(nodeId, dispatch) {
     console.log(`register node ${nodeId}`);
     const { state: { online } } = this;
@@ -36,15 +39,15 @@ class App extends React.Component {
     this.setState(Object.assign({}, { [nodeId]: dispatch, online }));
   }
 
+  // toggleOnline adds nodeId to the array of currently online nodes
   toggleOnline(nodeId) {
     if (this.state.online.indexOf(nodeId) >= 0) {
-      console.log(`node ${nodeId} has come online`);
+      console.log(`Node ${nodeId} has come online`);
       this.setState({
         online: this.state.online.filter(id => nodeId !== id),
       });
     } else {
-      console.log(`node ${nodeId} has gone offline`);
-
+      console.log(`Node ${nodeId} has gone offline`);
       this.setState({
         online: this.state.online.concat(nodeId),
       });

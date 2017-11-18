@@ -21,6 +21,7 @@ class Node extends React.Component {
       store: null,
     };
   }
+  
   componentWillMount() {
     const store = createStore(
       combineReducers({
@@ -33,6 +34,7 @@ class Node extends React.Component {
     this.sync();
     this.setState({ store });
   }
+
   sync() {
     setTimeout(() => {
       const pnCounterSelector = state => state.pncounter;
@@ -42,6 +44,7 @@ class Node extends React.Component {
       this.sync();
     }, Math.random() * (6000 - 2000) + 2000);
   }
+
   render() {
     return (
       <Provider store={this.state.store}>
