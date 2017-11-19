@@ -1,6 +1,5 @@
 /* eslint immutable/no-this: 0 */
 /* eslint immutable/no-mutation: 0 */
-/* eslint no-console: 0 */
 /* eslint no-mixed-operators: 0 */
 /* eslint no-underscore-dangle: 0 */
 import React from 'react';
@@ -21,6 +20,7 @@ class Node extends React.Component {
       store: null,
     };
   }
+
   componentWillMount() {
     const store = createStore(
       combineReducers({
@@ -33,6 +33,7 @@ class Node extends React.Component {
     this.sync();
     this.setState({ store });
   }
+
   sync() {
     setTimeout(() => {
       const pnCounterSelector = state => state.pncounter;
@@ -42,6 +43,7 @@ class Node extends React.Component {
       this.sync();
     }, Math.random() * (6000 - 2000) + 2000);
   }
+
   render() {
     return (
       <Provider store={this.state.store}>
