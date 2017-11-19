@@ -1,6 +1,10 @@
 module.exports = {
   extends: 'airbnb',
   plugins: ['immutable'],
+  env: {
+    browser: true,
+    node: true,
+  },
   rules: {
     'immutable/no-let': 2,
     'immutable/no-this': 2,

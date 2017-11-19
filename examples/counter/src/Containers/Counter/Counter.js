@@ -1,6 +1,3 @@
-/* eslint immutable/no-this: 0 */
-/* eslint immutable/no-mutation: 0 */
-
 import { connect } from 'react-redux';
 import { createCounterAction, counterSelector } from 'redux-eventually';
 
